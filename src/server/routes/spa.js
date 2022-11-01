@@ -9,6 +9,8 @@ export const spaRoute = async (fastify) => {
   fastify.register(fastifyStatic, {
     root: join(__dirname, "public"),
     wildcard: false,
+    preCompressed: true,
+    maxAge: 31536000,
   });
 
   fastify.get("/favicon.ico", () => {
