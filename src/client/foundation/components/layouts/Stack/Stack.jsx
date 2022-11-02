@@ -22,7 +22,16 @@ const Wrapper = styled.div`
 
 export const Stack = (
   /** @type {React.PropsWithChildren<Props>} */
-  { alignItems, as, children, gap, horizontal, justifyContent, wrap },
+  {
+    alignItems,
+    as,
+    children,
+    className,
+    gap,
+    horizontal,
+    justifyContent,
+    wrap,
+  },
 ) => {
   return (
     <Wrapper
@@ -32,6 +41,7 @@ export const Stack = (
       $justifyContent={justifyContent}
       $wrap={wrap}
       as={as}
+      className={className}
     >
       {children}
     </Wrapper>

@@ -138,7 +138,7 @@ export const Top = () => {
       <section>
         <Heading as="h1">本日のレース</Heading>
         {todayRacesToShow.length > 0 && (
-          <RecentRaceList>
+          <RecentRaceList itemsLength={todayRaces.length}>
             {todayRacesToShow.map((race) => (
               <RecentRaceList.Item key={race.id} race={race} />
             ))}

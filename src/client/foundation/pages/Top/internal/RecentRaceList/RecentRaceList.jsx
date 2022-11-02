@@ -9,35 +9,21 @@ import { easeOutCubic, useAnimation } from "../../../../hooks/useAnimation";
 import { Color, FontSize, Radius, Space } from "../../../../styles/variables";
 import { formatCloseAt } from "../../../../utils/DateUtils";
 
-export const RecentRaceList = ({ children }) => {
+const itemHeight = 148;
+
+export const RecentRaceList = ({ children, itemsLength }) => {
   return (
-    <Stack as="ul" gap={Space * 2}>
-      {children}
-    </Stack>
+    <Wrapper $itemsLength={itemsLength}>
+      <Stack as="ul" gap={Space * 2}>
+        {children}
+      </Stack>
+    </Wrapper>
   );
 };
 
-const ItemWrapper = styled.li`
-  background: ${Color.mono[0]};
-  border-radius: ${Radius.MEDIUM};
-  opacity: ${({ $opacity }) => $opacity};
-  padding: ${Space * 3}px;
-`;
-
-const RaceButton = styled(LinkButton)`
-  background: ${Color.mono[700]};
-  border-radius: ${Radius.MEDIUM};
-  color: ${Color.mono[0]};
-  padding: ${Space * 1}px ${Space * 2}px;
-
-  &:hover {
-    background: ${Color.mono[800]};
-  }
-`;
-
-const RaceTitle = styled.h2`
-  font-size: ${FontSize.LARGE};
-  font-weight: bold;
+const Wrapper = styled.div`
+  height: ${({ $itemsLength }) =>
+    `${$itemsLength * itemHeight + Space * 2 * ($itemsLength - 1)}px`};
 `;
 
 /**
@@ -101,4 +87,29 @@ const Item = ({ race }) => {
     </ItemWrapper>
   );
 };
+
 RecentRaceList.Item = Item;
+
+const ItemWrapper = styled.li`
+  background: ${Color.mono[0]};
+  border-radius: ${Radius.MEDIUM};
+  opacity: ${({ $opacity }) => $opacity};
+  padding: ${Space * 3}px;
+  height: ${itemHeight}px;
+`;
+
+const RaceButton = styled(LinkButton)`
+  background: ${Color.mono[700]};
+  border-radius: ${Radius.MEDIUM};
+  color: ${Color.mono[0]};
+  padding: ${Space * 1}px ${Space * 2}px;
+
+  &:hover {
+    background: ${Color.mono[800]};
+  }
+`;
+
+const RaceTitle = styled.h2`
+  font-size: ${FontSize.LARGE};
+  font-weight: bold;
+`;

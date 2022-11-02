@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Image = styled.img`
   display: block;
   margin: 0 auto;
+  padding-bottom: ${735 / 1024}%;
 `;
 
 /**
@@ -14,7 +15,5 @@ const Image = styled.img`
 
 /** @type {React.VFC<Props>} */
 export const HeroImage = ({ url }) => {
-  return (
-    <Image alt="じゃんけん投票サービス" height={1033} src={url} width={1440} />
-  );
+  return <Image alt="じゃんけん投票サービス" src={url} width={1440} />;
 };
