@@ -95,7 +95,7 @@ const ItemWrapper = styled.li`
   border-radius: ${Radius.MEDIUM};
   opacity: ${({ $opacity }) => $opacity};
   padding: ${Space * 3}px;
-  height: ${itemHeight}px;
+  min-height: ${itemHeight}px;
 `;
 
 const RaceButton = styled(LinkButton)`
