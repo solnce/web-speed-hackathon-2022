@@ -15,4 +15,6 @@ export const TrimmedImage = ({ height, src, width }) => {
 
 const Img = styled.img`
   object-fit: cover;
+  aspect-ratio: ${({ height, width }) => `${width}/${height}`};
+  height: auto;
 `;
