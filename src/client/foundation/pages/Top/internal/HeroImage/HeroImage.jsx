@@ -4,7 +4,8 @@ import styled from "styled-components";
 const Image = styled.img`
   display: block;
   margin: 0 auto;
-  padding-bottom: ${735 / 1024}%;
+  aspect-ratio: 1024 / 735;
+  height: auto;
 `;
 
 /**
