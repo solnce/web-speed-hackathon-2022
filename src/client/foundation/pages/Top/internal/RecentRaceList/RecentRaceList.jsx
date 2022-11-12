@@ -22,7 +22,7 @@ export const RecentRaceList = ({ children, itemsLength }) => {
 };
 
 const Wrapper = styled.div`
-  height: ${({ $itemsLength }) =>
+  min-height: ${({ $itemsLength }) =>
     `${$itemsLength * itemHeight + Space * 2 * ($itemsLength - 1)}px`};
 `;
 
