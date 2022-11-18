@@ -55,7 +55,6 @@ module.exports = [
     name: "client",
     output: {
       chunkFormat: "module",
-      filename: "[name].bundle.js",
       path: DIST_PUBLIC,
     },
     plugins: [
