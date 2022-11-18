@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import React, { forwardRef, useCallback, useState } from "react";
-import zenginCode from "zengin-code";
 
 import { Dialog } from "../../../../components/layouts/Dialog";
 import { Spacer } from "../../../../components/layouts/Spacer";
@@ -66,6 +65,8 @@ export const ChargeDialog = forwardRef(({ onComplete }, ref) => {
     },
     [charge, bankCode, branchCode, accountNo, amount, onComplete, clearForm],
   );
+
+  const zenginCode = () => import("zengin-code");
 
   const bankList = Object.entries(zenginCode).map(([code, { name }]) => ({
     code,

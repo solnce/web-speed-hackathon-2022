@@ -1,5 +1,6 @@
 import "regenerator-runtime/runtime";
 import fastify from "fastify";
+import compression from "fastify-compress";
 import fastifySensible from "fastify-sensible";
 
 import { User } from "../model/index.js";
@@ -12,16 +13,10 @@ import { initialize } from "./typeorm/initialize.js";
 const IS_PRODUCTION = process.env.NODE_ENV === "production";
 
 const server = fastify({
-  logger: IS_PRODUCTION
-    ? false
-    : {
-        prettyPrint: {
-          ignore: "pid,hostname",
-          translateTime: "SYS:HH:MM:ss",
-        },
-      },
+  http2: true,
 });
 server.register(fastifySensible);
+server.register(compression);
 
 server.addHook("onRequest", async (req, res) => {
   const repo = (await createConnection()).getRepository(User);

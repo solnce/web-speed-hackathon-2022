@@ -21,7 +21,7 @@ module.exports = [
   {
     devtool: "inline-source-map",
     entry: path.join(SRC_ROOT, "client/index.jsx"),
-    mode: process.env.NODE_ENV,
+    mode: "production",
     module: {
       rules: [
         {
@@ -54,6 +54,8 @@ module.exports = [
     },
     name: "client",
     output: {
+      chunkFormat: "module",
+      filename: "[name].bundle.js",
       path: DIST_PUBLIC,
     },
     plugins: [

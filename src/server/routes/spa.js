@@ -10,7 +10,7 @@ export const spaRoute = async (fastify) => {
     root: join(__dirname, "public"),
     wildcard: false,
     preCompressed: true,
-    maxAge: 31536000,
+    maxAge: 3153600,
   });
 
   fastify.get("/favicon.ico", () => {
