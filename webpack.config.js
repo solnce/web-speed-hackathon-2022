@@ -3,6 +3,7 @@ const path = require("path");
 
 const CopyPlugin = require("copy-webpack-plugin");
 const MomentLocalesPlugin = require("moment-locales-webpack-plugin");
+const TerserPlugin = require("terser-webpack-plugin");
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const nodeExternals = require("webpack-node-externals");
@@ -53,6 +54,10 @@ module.exports = [
       ],
     },
     name: "client",
+    optimization: {
+      minimize: true,
+      minimizer: [new TerserPlugin()],
+    },
     output: {
       chunkFormat: "module",
       path: DIST_PUBLIC,
