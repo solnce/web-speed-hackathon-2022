@@ -17,7 +17,6 @@ const server = fastify({
   http2: IS_PRODUCTION,
 });
 server.register(fastifySensible);
-server.register(compression);
 
 server.addHook("onRequest", async (req, res) => {
   const repo = (await createConnection()).getRepository(User);
@@ -40,6 +39,8 @@ server.addHook("onRequest", async (req, res) => {
 
 server.register(apiRoute, { prefix: "/api" });
 server.register(spaRoute);
+
+server.register(compression);
 
 const start = async () => {
   try {
