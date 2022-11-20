@@ -10,8 +10,11 @@ import { spaRoute } from "./routes/spa.js";
 import { createConnection } from "./typeorm/connection.js";
 import { initialize } from "./typeorm/initialize.js";
 
+const IS_PRODUCTION = process.env.NODE_ENV === "production";
+
 const server = fastify({
   logger: false,
+  http2: IS_PRODUCTION,
 });
 server.register(fastifySensible);
 server.register(compression);
