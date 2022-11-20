@@ -10,17 +10,8 @@ import { spaRoute } from "./routes/spa.js";
 import { createConnection } from "./typeorm/connection.js";
 import { initialize } from "./typeorm/initialize.js";
 
-const IS_PRODUCTION = process.env.NODE_ENV === "production";
-
 const server = fastify({
-  logger: IS_PRODUCTION
-    ? false
-    : {
-        prettyPrint: {
-          ignore: "pid,hostname",
-          translateTime: "SYS:HH:MM:ss",
-        },
-      },
+  logger: false,
 });
 server.register(fastifySensible);
 server.register(compression);

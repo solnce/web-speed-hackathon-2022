@@ -1,5 +1,5 @@
 import moment from "moment-timezone";
-import React, { useCallback, useRef, useState } from "react";
+import React, { Suspense, useCallback, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 
@@ -14,9 +14,11 @@ import { Color, Radius, Space } from "../../../styles/variables";
 import { formatTime } from "../../../utils/DateUtils";
 import { jsonFetcher } from "../../../utils/HttpUtils";
 
-import { OddsRankingList } from "./internal/OddsRankingList";
+const OddsRankingList = React.lazy(() => import("./internal/OddsRankingList"));
 import { OddsTable } from "./internal/OddsTable";
-import { TicketVendingModal } from "./internal/TicketVendingModal";
+const TicketVendingModal = React.lazy(() =>
+  import("./internal/TicketVendingModal"),
+);
 
 const LiveBadge = styled.span`
   background: ${Color.red};
@@ -114,14 +116,22 @@ export const Odds = () => {
         <Heading as="h2">人気順</Heading>
 
         <Spacer mt={Space * 2} />
-        <OddsRankingList
-          isRaceClosed={isRaceClosed}
-          odds={data.trifectaOdds}
-          onClickOdds={handleClickOdds}
-        />
+        <Suspense fallback="">
+          <OddsRankingList
+            isRaceClosed={isRaceClosed}
+            odds={data.trifectaOdds}
+            onClickOdds={handleClickOdds}
+          />
+        </Suspense>
       </Section>
 
-      <TicketVendingModal ref={modalRef} odds={oddsKeyToBuy} raceId={raceId} />
+      <Suspense fallback="">
+        <TicketVendingModal
+          ref={modalRef}
+          odds={oddsKeyToBuy}
+          raceId={raceId}
+        />
+      </Suspense>
     </Container>
   );
 };

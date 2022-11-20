@@ -122,3 +122,5 @@ export const TicketVendingModal = forwardRef(({ odds, raceId }, ref) => {
 });
 
 TicketVendingModal.displayName = "TicketVendingModal";
+
+export default TicketVendingModal;

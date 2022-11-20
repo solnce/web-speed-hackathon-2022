@@ -164,3 +164,5 @@ export const OddsTable = ({ entries, isRaceClosed, odds, onClickOdds }) => {
     </div>
   );
 };
+
+export default OddsTable;

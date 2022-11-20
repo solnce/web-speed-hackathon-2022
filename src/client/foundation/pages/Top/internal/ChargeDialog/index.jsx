@@ -162,3 +162,5 @@ export const ChargeDialog = forwardRef(({ onComplete }, ref) => {
 });
 
 ChargeDialog.displayName = "ChargeDialog";
+
+export default ChargeDialog;

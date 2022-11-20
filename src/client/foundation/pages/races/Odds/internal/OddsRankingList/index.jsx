@@ -98,3 +98,5 @@ export const OddsRankingList = ({ isRaceClosed, odds, onClickOdds }) => {
     </Wrapper>
   );
 };
+
+export default OddsRankingList;
